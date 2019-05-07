@@ -1,0 +1,116 @@
+{
+    "type": "object",
+    "properties": {
+        "parent": {
+            "required": true,
+            "type": "string"
+        },
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "`ServicePerimeter` describes a set of GCP resources which can freely import\nand export data amongst themselves, but not export outside of the\n`ServicePerimeter`. If a request with a source within this `ServicePerimeter`\nhas a target outside of the `ServicePerimeter`, the request will be blocked.\nOtherwise the request is allowed. There are two types of Service Perimeter -\nRegular and Bridge. Regular Service Perimeters cannot overlap, a single GCP\nproject can only belong to a single regular Service Perimeter. Service\nPerimeter Bridges can contain only GCP projects as members, a single GCP\nproject may belong to multiple Service Perimeter Bridges.",
+            "properties": {
+                "createTime": {
+                    "description": "Output only. Time the `ServicePerimeter` was created in UTC.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Description of the `ServicePerimeter` and its use. Does not affect\nbehavior.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Required. Resource name for the ServicePerimeter.  The `short_name`\ncomponent must begin with a letter and only include alphanumeric and '_'.\nFormat: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`",
+                    "type": "string"
+                },
+                "perimeterType": {
+                    "description": "Perimeter type indicator. A single project is\nallowed to be a member of single regular perimeter, but multiple service\nperimeter bridges. A project cannot be a included in a perimeter bridge\nwithout being included in regular perimeter. For perimeter bridges,\nrestricted/unrestricted service lists as well as access lists must be\nempty.",
+                    "enum": [
+                        "PERIMETER_TYPE_REGULAR",
+                        "PERIMETER_TYPE_BRIDGE"
+                    ],
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Current ServicePerimeter configuration. Specifies sets of resources,\nrestricted/unrestricted services and access levels that determine perimeter\ncontent and boundaries.",
+                    "properties": {
+                        "accessLevels": {
+                            "description": "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via GCP calls\nwith request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "resources": {
+                            "description": "A list of GCP resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "restrictedServices": {
+                            "description": "GCP services that are subject to the Service Perimeter restrictions. Must\ncontain a list of services. For example, if\n`storage.googleapis.com` is specified, access to the storage buckets\ninside the perimeter must meet the perimeter's access restrictions.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "unrestrictedServices": {
+                            "description": "GCP services that are not subject to the Service Perimeter\nrestrictions. Deprecated. Must be set to a single wildcard \"*\".\n\nThe wildcard means that unless explicitly specified by\n\"restricted_services\" list, any service is treated as unrestricted.",
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        }
+                    },
+                    "type": "object"
+                },
+                "title": {
+                    "description": "Human readable title. Must be unique within the Policy.",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. Time the `ServicePerimeter` was updated in UTC.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}

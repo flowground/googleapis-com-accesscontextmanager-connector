@@ -1,0 +1,203 @@
+{
+    "title": "Access Context Manager",
+    "description": "An API for setting attribute based access control to requests to GCP services.",
+    "docsUrl": "https://cloud.google.com/access-context-manager/docs/reference/rest/",
+    "url": "https://api.apis.guru/v2/specs/googleapis.com/accesscontextmanager/v1beta/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://accesscontextmanager.googleapis.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "Oauth2": {
+                "label": "Oauth 2.0 authentication",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "accesscontextmanager_accessPolicies_list": {
+            "main": "./lib/actions/accesscontextmanager_accessPolicies_list.js",
+            "title": "List all AccessPolicies under a\ncontainer.",
+            "description": "List all AccessPolicies under a\ncontainer.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/accesscontextmanager_accessPolicies_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "accesscontextmanager_accessPolicies_create": {
+            "main": "./lib/actions/accesscontextmanager_accessPolicies_create.js",
+            "title": "Create an `AccessPolicy`. Fails if this organization already has a\n`AccessPolicy`. The longrunning Operation will have a successful status\nonce the `AccessPolicy` has propagated to long-lasting storage.\nSyntactic and basic semantic errors will be returned in `metadata` as a\nBadRequest proto.",
+            "description": "Create an `AccessPolicy`. Fails if this organization already has a\n`AccessPolicy`. The longrunning Operation will have a successful status\nonce the `AccessPolicy` has propagated to long-lasting storage.\nSyntactic and basic semantic errors will be returned in `metadata` as a\nBadRequest proto.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/accesscontextmanager_accessPolicies_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "accesscontextmanager_accessPolicies_accessLevels_delete": {
+            "main": "./lib/actions/accesscontextmanager_accessPolicies_accessLevels_delete.js",
+            "title": "Delete an Access Level by resource\nname. The longrunning operation from this RPC will have a successful status\nonce the Access Level has been removed\nfrom long-lasting storage.",
+            "description": "Delete an Access Level by resource\nname. The longrunning operation from this RPC will have a successful status\nonce the Access Level has been removed\nfrom long-lasting storage.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/accesscontextmanager_accessPolicies_accessLevels_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "accesscontextmanager_accessPolicies_accessLevels_get": {
+            "main": "./lib/actions/accesscontextmanager_accessPolicies_accessLevels_get.js",
+            "title": "Get an Access Level by resource\nname.",
+            "description": "Get an Access Level by resource\nname.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/accesscontextmanager_accessPolicies_accessLevels_get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "accesscontextmanager_accessPolicies_accessLevels_patch": {
+            "main": "./lib/actions/accesscontextmanager_accessPolicies_accessLevels_patch.js",
+            "title": "Update an Access Level. The longrunning\noperation from this RPC will have a successful status once the changes to\nthe Access Level have propagated\nto long-lasting storage. Access Levels containing\nerrors will result in an error response for the first error encountered.",
+            "description": "Update an Access Level. The longrunning\noperation from this RPC will have a successful status once the changes to\nthe Access Level have propagated\nto long-lasting storage. Access Levels containing\nerrors will result in an error response for the first error encountered.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/accesscontextmanager_accessPolicies_accessLevels_patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "accesscontextmanager_accessPolicies_accessLevels_list": {
+            "main": "./lib/actions/accesscontextmanager_accessPolicies_accessLevels_list.js",
+            "title": "List all Access Levels for an access\npolicy.",
+            "description": "List all Access Levels for an access\npolicy.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/accesscontextmanager_accessPolicies_accessLevels_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "accesscontextmanager_accessPolicies_accessLevels_create": {
+            "main": "./lib/actions/accesscontextmanager_accessPolicies_accessLevels_create.js",
+            "title": "Create an Access Level. The longrunning\noperation from this RPC will have a successful status once the Access\nLevel has\npropagated to long-lasting storage. Access Levels containing\nerrors will result in an error response for the first error encountered.",
+            "description": "Create an Access Level. The longrunning\noperation from this RPC will have a successful status once the Access\nLevel has\npropagated to long-lasting storage. Access Levels containing\nerrors will result in an error response for the first error encountered.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/accesscontextmanager_accessPolicies_accessLevels_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "accesscontextmanager_accessPolicies_servicePerimeters_list": {
+            "main": "./lib/actions/accesscontextmanager_accessPolicies_servicePerimeters_list.js",
+            "title": "List all Service Perimeters for an\naccess policy.",
+            "description": "List all Service Perimeters for an\naccess policy.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/accesscontextmanager_accessPolicies_servicePerimeters_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "accesscontextmanager_accessPolicies_servicePerimeters_create": {
+            "main": "./lib/actions/accesscontextmanager_accessPolicies_servicePerimeters_create.js",
+            "title": "Create an Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nService Perimeter has\npropagated to long-lasting storage. Service Perimeters containing\nerrors will result in an error response for the first error encountered.",
+            "description": "Create an Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nService Perimeter has\npropagated to long-lasting storage. Service Perimeters containing\nerrors will result in an error response for the first error encountered.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/accesscontextmanager_accessPolicies_servicePerimeters_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "type": "object",
+    "properties": {
+        "access_token": {
+            "type": "string"
+        },
+        "alt": {
+            "type": "string",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "default": "json"
+        },
+        "callback": {
+            "type": "string"
+        },
+        "fields": {
+            "type": "string"
+        },
+        "key": {
+            "type": "string"
+        },
+        "oauth_token": {
+            "type": "string"
+        },
+        "prettyPrint": {
+            "type": "boolean",
+            "default": true
+        },
+        "quotaUser": {
+            "type": "string"
+        },
+        "uploadType": {
+            "type": "string"
+        },
+        "upload_protocol": {
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "`AccessPolicy` is a container for `AccessLevels` (which define the necessary\nattributes to use GCP services) and `ServicePerimeters` (which define regions\nof services able to freely pass data within a perimeter). An access policy is\nglobally visible within an organization, and the restrictions it specifies\napply to all projects within an organization.",
+            "properties": {
+                "createTime": {
+                    "description": "Output only. Time the `AccessPolicy` was created in UTC.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. Resource name of the `AccessPolicy`. Format:\n`accessPolicies/{policy_id}`",
+                    "type": "string"
+                },
+                "parent": {
+                    "description": "Required. The parent of this `AccessPolicy` in the Cloud Resource\nHierarchy. Currently immutable once created. Format:\n`organizations/{organization_id}`",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Required. Human readable title. Does not affect behavior.",
+                    "type": "string"
+                },
+                "updateTime": {
+                    "description": "Output only. Time the `AccessPolicy` was updated in UTC.",
+                    "format": "google-datetime",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "__xgafv": {
+            "type": "string",
+            "enum": [
+                "1",
+                "2"
+            ]
+        }
+    }
+}
